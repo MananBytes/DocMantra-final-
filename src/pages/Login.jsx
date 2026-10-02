@@ -152,6 +152,25 @@ export default function Login() {
                         </button>
                     </form>
 
+                    <div className="relative my-6">
+                        <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
+                        <div className="relative flex justify-center text-xs uppercase"><span className="bg-slate-50 px-2 text-slate-400 font-semibold">Or</span></div>
+                    </div>
+
+                    <button
+                        type="button"
+                        onClick={async () => {
+                            setLoading(true);
+                            const data = await login('demo_admin', 'demo');
+                            showToast('success', 'Demo Session Started', 'Logged in as KMRL Administrator');
+                            navigate('/dashboard');
+                        }}
+                        disabled={loading}
+                        className="btn btn-secondary w-full text-xs font-bold py-2.5 text-navy-900 border-slate-300 hover:bg-slate-100"
+                    >
+                        ⚡ Instant Demo Access (No Backend Required)
+                    </button>
+
                     <p className="text-center text-[13px] text-slate-500 mt-6">
                         Don't have an account?{' '}
                         <Link to="/register" className="text-aqua-600 font-semibold hover:underline">
